@@ -16,6 +16,10 @@ secrets/*
 *credentials*
 .env
 
+# 真实网络代理配置（仅运行期使用；模板见 configs/proxy/*.example）
+/shadowsocks-config.json
+configs/proxy/*.json
+
 # 仅保留用到的 kitty 主题；其余合集忽略
 configs/kitty/kitty-themes/
 

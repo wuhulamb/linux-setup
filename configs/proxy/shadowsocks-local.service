@@ -1,0 +1,21 @@
+# Shadowsocks-libev 本地 SOCKS5 客户端（systemd 单元模板）
+# 由 stages/S3-proxy/apply.sh 部署到 /etc/systemd/system/shadowsocks-local.service
+# 配置：/etc/shadowsocks-libev/config.json（root:shadowsocks 0640）
+[Unit]
+Description=Shadowsocks-libev local SOCKS5 proxy
+Documentation=man:ss-local(1)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=shadowsocks
+Group=shadowsocks
+ExecStart=/usr/bin/ss-local -c /etc/shadowsocks-libev/config.json
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=32768
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,9 +1,27 @@
 # S6 图形与登录
 
-装包：X11 + i3 + lightdm（见 `packages.md`）。
-配置：`configs/i3/config`；lightdm 默认会话 i3、默认目标 graphical。
-登录界面 DPI：greeter 以 `lightdm` 用户运行，**读不到用户 `~/.Xresources`**，
-故用 greeter 的 `[greeter] xft-dpi=`，由 `greeter-dpi.service`（`Before=lightdm.service`）
-在 lightdm 之前按机器写定。
+## 目标
+- 安装 X11 与 i3（含 i3status/i3lock/dmenu），部署 `configs/i3/config`。
+- 安装 lightdm(+gtk greeter)，默认会话为 i3，默认目标 `graphical.target`。
 
-验证：`verify.sh` + `qemu/screenshot.sh`（截图确认 greeter 与缩放）。
+## 登录界面 DPI
+greeter 以 `lightdm` 用户运行，**读不到用户 `~/.Xresources`**，故用 greeter 自身的
+`[greeter] xft-dpi=`，由 `greeter-dpi.service`（`Before=lightdm.service`）在 lightdm
+之前按机器写定（判定同 `lib/detect.sh`）。用户会话的 Xft.dpi 见 S5。
+
+## 步骤
+1. 按 `distros/<distro>/packages.md` 的“图形与登录”装包。
+2. 运行 `stages/S6-desktop-session/apply.sh`：
+   - 部署 i3 配置、lightdm 默认会话（`user-session=i3`）+ `graphical.target`；
+   - 安装 greeter DPI 服务并执行一次；
+   - 写 `/etc/environment` 的输入法环境变量（`GTK_IM_MODULE=fcitx` 等，供 S7）。
+3. QEMU 验证（`verify.sh` + `qemu/screenshot.sh` 截图确认 greeter 渲染）。
+
+## 随机壁纸（可选）
+可选功能，全部细节（源图/裁剪工具上游 https://github.com/wuhulamb/wallpaper-crop、
+按设备裁剪 `dst/<尺寸>/`、组件与部署）见 **`configs/wallpaper/README.md`**；
+部署脚本：`stages/S6-desktop-session/apply-wallpaper.sh`；`feh` 装包见 `packages.md`。
+
+## 验证
+方法见 `docs/verification.md`。S6 要点：`lightdm` active、`Xorg` 运行、i3 会话；
+墙纸可选功能的要点也在其中。

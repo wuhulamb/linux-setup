@@ -13,6 +13,12 @@ sudo pacman -S --needed networkmanager wpa_supplicant iw rfkill wireless-regdb p
 sudo systemctl enable --now NetworkManager
 ```
 
+## 网络代理（S3-proxy，可选）
+```bash
+sudo pacman -S --needed shadowsocks-libev proxychains-ng
+# proxychains4 配置见 configs/proxy/proxychains4.conf
+```
+
 ## 远程与 Shell（S4）
 ```bash
 sudo pacman -S --needed openssh
@@ -31,12 +37,18 @@ sudo pacman -S --needed xorg-server xorg-xinit xorg-xrandr xorg-xrdb xorg-xsetro
   i3-wm i3status i3lock dmenu \
   lightdm lightdm-gtk-greeter accountsservice polkit
 sudo systemctl enable lightdm
+# 随机壁纸（可选，configs/wallpaper/）：源图/裁剪见上游 wuhulamb/wallpaper-crop
+sudo pacman -S --needed feh
 ```
 
 ## 输入法（S7）
 ```bash
 sudo pacman -S --needed fcitx5 fcitx5-rime fcitx5-configtool \
   fcitx5-gtk fcitx5-qt
+
+# fcitx5-vinput 语音输入（可选，需从源码编译）：
+# 依赖：cmake gcc make pkgconf git nlohmann-json libsystemd pipewire fcitx5
+# 运行：TARGET_USER=<user> sudo -E stages/S7-ime/install-vinput.sh
 ```
 
 ## 终端（S8）
@@ -48,4 +60,10 @@ sudo pacman -S --needed kitty
 ```bash
 # Node.js 官方二进制到 /usr/local，再 npm i -g pi；见 docs/stages/S9-apps.md
 # 或 pacman -S nodejs npm
+
+# uv（Python 包/venv 管理器）：
+sudo pacman -S --needed uv
+
+# 常用工具与图形应用：
+sudo pacman -S --needed fd ripgrep firefox ffmpeg obs-studio
 ```

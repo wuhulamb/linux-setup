@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+# 按设备选择壁纸尺寸（同 lib/detect.sh 的 HiDPI 判定）：
+#   AMD Ryzen 7 7840 笔记本 → 2880x1800，其它 → 1920x1080
+if grep -qiE 'Ryzen 7 7840' /proc/cpuinfo 2>/dev/null; then
+    SIZE=2880x1800
+else
+    SIZE=1920x1080
+fi
+
+WALLPAPER_DIR="/home/xu/Pictures/wallpaper/dst/$SIZE/"
+CURRENT_WALLPAPER="/var/lib/wallpapers/current"
+
+WALLPAPER=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f -iname "*.png" | shuf -n 1)
+
+if [ -z "$WALLPAPER" ]; then
+    echo "No wallpaper found in $WALLPAPER_DIR" >&2
+    exit 1
+fi
+
+install -m 0644 "$WALLPAPER" "$CURRENT_WALLPAPER"
+
+echo "Selected wallpaper: $WALLPAPER"
