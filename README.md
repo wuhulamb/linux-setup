@@ -27,7 +27,9 @@ stages/S3-network/apply.sh           # 部署配置
 ## 目录
 - `docs/` 文档（总览/约定/阶段矩阵/验证）
 - `stages/` 阶段脚本（`apply.sh` 部署配置、`verify.sh` 验证）
-- `configs/` 个人偏好（network/fcitx5/rime/kitty/i3/fonts/dotfiles）
+- `configs/` 个人偏好（network/fcitx5/kitty/i3/fonts/dotfiles）；
+  字体来自 https://github.com/wuhulamb/fonts ，rime 配置来自
+  https://github.com/wongdean/rime-settings （两者均**不入库**，仅记录来源与个人调整）
 - `lib/` 发行版无关库（detect/deploy/svc/log）
 - `distros/` 发行版专属（基础安装 + 各阶段软件清单）
 - `qemu/` 验证脚手架；`tools/` 镜像与介质构建；`secrets/` 私密说明

@@ -7,10 +7,17 @@ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 H="$(getent passwd "$TARGET_USER" | cut -d: -f6)"
 
 mkdir -p "$H/.fonts" "$H/.config/fontconfig"
-# 个人字体（若仓库放置了 files/）
+# 字体文件不入库：优先用本地 configs/fonts/files/，否则从个人仓库克隆
+#   来源: https://github.com/wuhulamb/fonts
+FONTS_REPO="${FONTS_REPO:-https://github.com/wuhulamb/fonts.git}"
 if [ -d "$ROOT/configs/fonts/files" ]; then
     cp -a "$ROOT/configs/fonts/files/." "$H/.fonts/" 2>/dev/null || true
+else
+    _tmp="$(mktemp -d)"
+    git clone --depth 1 "$FONTS_REPO" "$_tmp" 2>/dev/null && cp -a "$_tmp/." "$H/.fonts/" 2>/dev/null || true
+    rm -rf "$_tmp"
 fi
+chown -R "$TARGET_USER" "$H/.fonts" 2>/dev/null || true
 deploy_file "$ROOT/configs/fonts/fonts.conf" "$H/.config/fontconfig/fonts.conf" 644 "$TARGET_USER"
 
 # 按机器设置 Xft.dpi 的脚本（供 X 会话初始化调用）

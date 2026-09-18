@@ -12,8 +12,19 @@ deploy_file "$ROOT/configs/fcitx5/config" "$H/.config/fcitx5/config" 644 "$TARGE
 deploy_file "$ROOT/configs/fcitx5/profile" "$H/.config/fcitx5/profile" 644 "$TARGET_USER"
 deploy_file "$ROOT/configs/fcitx5/conf/classicui.conf" "$H/.config/fcitx5/conf/classicui.conf" 644 "$TARGET_USER"
 deploy_file "$ROOT/configs/fcitx5/conf/rime.conf" "$H/.config/fcitx5/conf/rime.conf" 644 "$TARGET_USER"
-deploy_file "$ROOT/configs/rime/default.custom.yaml" "$H/.local/share/fcitx5/rime/default.custom.yaml" 644 "$TARGET_USER"
-deploy_file "$ROOT/configs/rime/luna_pinyin.custom.yaml" "$H/.local/share/fcitx5/rime/luna_pinyin.custom.yaml" 644 "$TARGET_USER"
+# rime 配置不入库：从个人仓库获取，再应用本仓库的个人调整
+#   来源: https://github.com/wongdean/rime-settings
+RIME_REPO="${RIME_REPO:-https://github.com/wongdean/rime-settings.git}"
+RIME="$H/.local/share/fcitx5/rime"
+_tmp="$(mktemp -d)"
+if git clone --depth 1 "$RIME_REPO" "$_tmp" 2>/dev/null; then
+    cp -a "$_tmp/." "$RIME/"
+    # rime 自带字体 -> ~/.fonts（个人字体另有仓库）
+    if [ -d "$RIME/font" ]; then cp -f "$RIME/font/"*.ttf "$H/.fonts/" 2>/dev/null || true; rm -rf "$RIME/font"; fi
+    python3 "$ROOT/stages/S7-ime/apply-rime-tweaks.py" "$RIME" 2>/dev/null || true
+fi
+rm -rf "$_tmp"
+chown -R "$TARGET_USER" "$RIME" 2>/dev/null || true
 
 # 触发一次 rime 部署（无头）
 install -d -o "$TARGET_USER" -g "$TARGET_USER" -m 700 "/run/user/$(id -u "$TARGET_USER")" 2>/dev/null || true
