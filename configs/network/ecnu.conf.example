@@ -1,0 +1,3 @@
+# ECNU 校园网有线认证凭据（/etc/ecnu/ecnu.conf，权限 0600）
+username=<CAMPUS_ID>
+password=<CAMPUS_PASSWORD>

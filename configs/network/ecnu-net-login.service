@@ -1,0 +1,17 @@
+[Unit]
+Description=ECNU campus network login (wired, srun_portal)
+Documentation=https://github.com/ECNUSR/ecnu_network_login
+After=NetworkManager.service
+Wants=NetworkManager.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ecnu_net_login --mode loop --interval 60
+Restart=always
+RestartSec=30
+Nice=10
+# 不阻塞关机
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

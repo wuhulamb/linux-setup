@@ -1,0 +1,14 @@
+# 极简 i3 配置（配合 kitty / fcitx5）
+set $mod Mod4
+font pango:Microsoft YaHei 10
+bindsym $mod+Return exec kitty
+bindsym $mod+d exec dmenu_run
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec i3-msg exit
+# 会话里启动输入法
+exec --no-startup-id fcitx5 -d --replace
+bar {
+    status_command i3status
+}

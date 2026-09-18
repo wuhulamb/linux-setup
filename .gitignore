@@ -1,0 +1,24 @@
+# 验证产物 / 构建产物（不进 git）
+artifacts/
+work/
+logs/
+*.log
+*.iso
+*.img
+*.qcow2
+*.fd
+*.ppm
+
+# 私密信息
+secrets/*
+!secrets/README.md
+*.secret
+*credentials*
+.env
+
+# 仅保留用到的 kitty 主题；其余合集忽略
+configs/kitty/kitty-themes/
+
+# 编辑器
+__pycache__/
+*.swp

@@ -1,0 +1,33 @@
+# Wi-Fi 校园网 (WPA-EAP / PEAP / MSCHAPv2) 配置模板
+# 实际部署到 /etc/NetworkManager/system-connections/ECNU-1X.nmconnection
+# 权限必须为 0600，属主 root；请替换 <...> 占位符。
+[connection]
+id=ECNU-1X
+uuid=<UUID>
+type=wifi
+autoconnect=true
+autoconnect-priority=50
+autoconnect-retries=0
+
+[wifi]
+ssid=<WIFI_SSID>
+mode=infrastructure
+
+[wifi-security]
+key-mgmt=wpa-eap
+
+[802-1x]
+eap=peap;
+identity=<CAMPUS_ID>
+password=<CAMPUS_PASSWORD>
+phase2-auth=mschapv2
+password-flags=0
+
+[ipv4]
+method=auto
+route-metric=600
+
+[ipv6]
+method=auto
+route-metric=600
+addr-gen-mode=stable-privacy

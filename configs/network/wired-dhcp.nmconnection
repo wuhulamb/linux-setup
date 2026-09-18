@@ -1,0 +1,15 @@
+[connection]
+id=wired-dhcp
+uuid=60eaa650-f0a9-4d3a-a94d-a24236b132ba
+type=ethernet
+autoconnect=true
+autoconnect-priority=100
+
+[ipv4]
+method=auto
+route-metric=100
+
+[ipv6]
+method=auto
+route-metric=100
+addr-gen-mode=stable-privacy

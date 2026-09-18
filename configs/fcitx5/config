@@ -1,0 +1,4 @@
+[Hotkey]
+# fcitx5 默认 AltTriggerKeys=Shift_L 会抢占 Shift，导致 rime 收不到 Shift、
+# 无法在中文/英文之间切换。清空它，把 Shift 交给 rime。
+AltTriggerKeys=

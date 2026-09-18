@@ -1,0 +1,11 @@
+{
+  "!": "archinstall 配置示例（占位符，勿含真实密码）",
+  "archinstall-language": "English",
+  "bootloader": "Grub",
+  "disk_config": { "config_type": "default_layout", "device": "/dev/vda", "wipe": true },
+  "kernels": ["linux"],
+  "locale_config": { "kb_layout": "us", "sys_lang": "en_US.UTF-8" },
+  "network_config": { "type": "nm" },
+  "profile_config": { "gfx_driver": "All open-source" },
+  "bootloader_config": { "removable": true }
+}
