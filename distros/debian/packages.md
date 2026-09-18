@@ -42,6 +42,8 @@ sudo apt install -y --no-install-recommends \
   lightdm lightdm-gtk-greeter accountsservice polkitd
 # 随机壁纸（可选，configs/wallpaper/）：feh 用于 i3 铺设壁纸；源图/裁剪见上游 wuhulamb/wallpaper-crop
 sudo apt install -y --no-install-recommends feh
+# 截图（i3 的 Print 键 → flameshot gui，见 configs/i3/config）
+sudo apt install -y --no-install-recommends flameshot
 ```
 
 ## 输入法（S7）

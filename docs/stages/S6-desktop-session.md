@@ -17,6 +17,10 @@ greeter 以 `lightdm` 用户运行，**读不到用户 `~/.Xresources`**，故�
    - 写 `/etc/environment` 的输入法环境变量（`GTK_IM_MODULE=fcitx` 等，供 S7）。
 3. QEMU 验证（`verify.sh` + `qemu/screenshot.sh` 截图确认 greeter 渲染）。
 
+## 截图（i3 的 Print 键）
+`configs/i3/config` 含 `bindsym Print exec flameshot gui`：按 `Print` 调起 flameshot 截图
+（需装 `flameshot`，见 `distros/<distro>/packages.md`）。
+
 ## 随机壁纸（可选）
 可选功能，全部细节（源图/裁剪工具上游 https://github.com/wuhulamb/wallpaper-crop、
 按设备裁剪 `dst/<尺寸>/`、组件与部署）见 **`configs/wallpaper/README.md`**；

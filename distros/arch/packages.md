@@ -39,6 +39,8 @@ sudo pacman -S --needed xorg-server xorg-xinit xorg-xrandr xorg-xrdb xorg-xsetro
 sudo systemctl enable lightdm
 # 随机壁纸（可选，configs/wallpaper/）：源图/裁剪见上游 wuhulamb/wallpaper-crop
 sudo pacman -S --needed feh
+# 截图（i3 的 Print 键 → flameshot gui）：
+sudo pacman -S --needed flameshot
 ```
 
 ## 输入法（S7）

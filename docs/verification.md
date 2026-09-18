@@ -16,7 +16,7 @@ TARGET=/dev/sdX qemu/run-guest.sh
 - **S3‑proxy**：`systemctl is-enabled/is-active shadowsocks-local`；`ss -lntp | grep 1080`；`curl -x socks5h://127.0.0.1:1080 ...` 连通。
 - **S4**：`systemctl is-active ssh`、SSH 实际登录、dotfiles 生效。
 - **S5**：`fc-match`；会话内 `xrdb -query | grep Xft.dpi`。
-- **S6**：`lightdm`/`Xorg`/i3；`screendump` 截图确认 greeter；`greeter xft-dpi`。
+- **S6**：`lightdm`/`Xorg`/i3；`screendump` 截图确认 greeter；`greeter xft-dpi`；`i3 -C` 配置解析通过、`flameshot --version`、Print 绑定存在。
 - **S6‑壁纸（可选）**：`feh --version`；`random-wallpaper.service` enabled、`/var/lib/wallpapers/current` 为有效 PNG；i3/greeter 配置含壁纸行。
 - **S7**：`fcitx5` 运行；`~/.local/share/fcitx5/rime/build/` 生成；默认 rime、Shift 切中英。
 - **S7‑vinput（可选）**：`vinput-daemon` 用户服务 active；日志含模型加载完成与 D-Bus `org.fcitx.Vinput`。
