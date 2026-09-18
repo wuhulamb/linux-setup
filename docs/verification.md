@@ -20,7 +20,7 @@ TARGET=/dev/sdX qemu/run-guest.sh
 - **S6‑壁纸（可选）**：`feh --version`；`random-wallpaper.service` enabled、`/var/lib/wallpapers/current` 为有效 PNG；i3/greeter 配置含壁纸行。
 - **S7**：`fcitx5` 运行；`~/.local/share/fcitx5/rime/build/` 生成；默认 rime、Shift 切中英。
 - **S7‑vinput（可选）**：`vinput-daemon` 用户服务 active；日志含模型加载完成与 D-Bus `org.fcitx.Vinput`。
-- **S8**：`kitty --version`、`x-terminal-emulator`、kitty 配置解析（font_size 按设备：7840→14.0/其它→12.0，含三个 map）。
+- **S8**：`kitty --version`、`x-terminal-emulator`；`font-size.conf` 按设备生成（非 7840→12.0，`KITTY_FONT_SIZE=14.0` 可验证覆盖）；kitty.conf 含三个 map。
 - **S9**：`node -v`、`npm -v`、`pi --version`；`uv --version`；工具版本 `fdfind --version`/`rg --version`/`ffmpeg -version`/`firefox-esr --version`/`obs --version`。
 
 ## 证据留存

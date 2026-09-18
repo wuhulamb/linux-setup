@@ -11,6 +11,13 @@ preferred_dpi() {
     if is_amd_7840; then echo 240; else echo 135; fi
 }
 
+# 推荐的 kitty 字号：7840 笔记本 14.0，其它 12.0；可用 KITTY_FONT_SIZE 或 /etc/kitty-font-size 覆盖
+preferred_kitty_font_size() {
+    if [ -n "${KITTY_FONT_SIZE:-}" ]; then printf '%s\n' "$KITTY_FONT_SIZE"; return; fi
+    if [ -r /etc/kitty-font-size ]; then cat /etc/kitty-font-size; return; fi
+    if is_amd_7840; then echo 14.0; else echo 12.0; fi
+}
+
 # 列出以太网接口（ARPHRD_ETHER，排除 lo）
 ethernet_ifaces() {
     for d in /sys/class/net/*; do

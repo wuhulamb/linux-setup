@@ -11,6 +11,7 @@
 | `WIFI_SSID` | 校园 Wi‑Fi SSID | 可写默认 |
 | `GIT_NAME`/`GIT_EMAIL` | git 身份（运行期） | 不落仓库 |
 | `XFT_DPI` | 覆盖 HiDPI 判定 | `240` / `135` |
+| `KITTY_FONT_SIZE` | 覆盖 kitty 字号判定（S8） | `14.0` / `12.0` |
 | `GUEST_USER`/`GUEST_PASS` | QEMU 串口登录（运行期） | 不落仓库 |
 
 ## 目标盘安全
