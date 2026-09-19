@@ -54,7 +54,7 @@
 
 | 来源 | 内容 |
 |---|---|
-| S2 | 基础工具清单（curl/wget/git/vim/less/bash-completion，可按需增减） |
+| S2 | 基础工具清单（curl/wget/git/vim/less/bash-completion/rsync，可按需增减） |
 | S3 | 校园网 ECNU、本地 SOCKS5 代理（可选子项） |
 | S5 | 字体来源（个人仓库）、fonts.conf 回退（YaHei）、Xft.dpi 数值与按机器判定 |
 | S6 | 桌面整体（X11 / i3 / lightdm / udisks2 / flameshot / greeter / 壁纸等） |

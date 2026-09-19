@@ -7,7 +7,7 @@
 ```bash
 sudo apt update
 sudo apt install -y --no-install-recommends \
-  sudo ca-certificates curl wget less vim git bash-completion
+  sudo ca-certificates curl wget less vim git bash-completion rsync
 ```
 
 ## 网络（S3）

@@ -4,7 +4,7 @@
 
 ## 基础（S2）
 ```bash
-sudo pacman -S --needed base-devel ca-certificates curl wget less vim git bash-completion
+sudo pacman -S --needed base-devel ca-certificates curl wget less vim git bash-completion rsync
 ```
 
 ## 网络（S3）
