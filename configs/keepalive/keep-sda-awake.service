@@ -1,0 +1,12 @@
+# 由 stages/S9-apps/apply.sh 部署到 /etc/systemd/system/keep-sda-awake.service
+# 模板：@ROOT_DEV@ 在 apply 时替换为根设备（默认 findmnt -n -o SOURCE /，
+# 可用 KEEP_ALIVE_DEVICE 环境变量覆盖；手工替换用 sed 's|@ROOT_DEV@|/dev/sdX|'）
+#
+# 机制：每 3 分钟对根盘直读 1MB（iflag=direct 绕过页缓存，保证有真实盘上 IO），
+#       阻止 USB 硬盘盒/SSD 进入固件级空闲休眠；timeout 60 防止盘异常时无限阻塞。
+[Unit]
+Description=Keep root disk awake (USB enclosure idle-sleep guard)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/timeout 60 /usr/bin/dd if=@ROOT_DEV@ of=/dev/null bs=1M count=1 iflag=direct

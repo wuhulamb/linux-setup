@@ -1,0 +1,12 @@
+# 由 stages/S9-apps/apply.sh 部署到 /etc/systemd/system/keep-sda-awake.timer
+# 开机自启；调整间隔：编辑 [Timer] 的 OnUnitActiveSec 后 systemctl daemon-reload
+[Unit]
+Description=Run keep-sda-awake every 3 minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=3min
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target

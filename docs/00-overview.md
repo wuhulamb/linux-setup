@@ -28,7 +28,7 @@
 | S6 | 图形与登录（X11 + i3 + lightdm，含随机壁纸） | `docs/stages/S6-desktop-session.md` |
 | S7 | 输入法（fcitx5 + rime，可选 vinput 语音） | `docs/stages/S7-ime.md` |
 | S8 | 终端（kitty + 主题） | `docs/stages/S8-terminal.md` |
-| S9 | 应用/开发（Node.js + pi + uv + 工具，可选） | `docs/stages/S9-apps.md` |
+| S9 | 应用/开发（Node.js + pi + uv + 工具；可选 USB 根盘保活） | `docs/stages/S9-apps.md` |
 
 > 装包见 `distros/<distro>/packages.md`；验证要点见 `docs/verification.md`。
 
