@@ -22,7 +22,7 @@ TARGET=/dev/sdX qemu/run-guest.sh
 - **S7‑vinput（可选）**：`vinput-daemon` 用户服务 active；日志含模型加载完成与 D-Bus `org.fcitx.Vinput`。
 - **S8**：`kitty --version`、`x-terminal-emulator`；`font-size.conf` 按设备生成（非 7840→12.0，`KITTY_FONT_SIZE=14.0` 可验证覆盖）；kitty.conf 含三个 map。
 - **S9**：`node -v`、`npm -v`、`pi --version`；`uv --version`；工具版本 `fdfind --version`/`rg --version`/`ffmpeg -version`/`firefox-esr --version`/`obs --version`。
-- **S9‑保活（可选）**：`keep-sda-awake.timer` enabled/active；`journalctl -u keep-sda-awake` 无 timeout 报错（unit 无 failed）。
+- **S10‑保活（可选）**：`keep-sda-awake.timer` enabled/active；`journalctl -u keep-sda-awake` 无 timeout 报错（unit 无 failed）。
 
 ## 证据留存
 - `artifacts/*.log`：串口/命令输出；

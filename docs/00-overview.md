@@ -28,7 +28,8 @@
 | S6 | 图形与登录（X11 + i3 + lightdm，含随机壁纸） | `docs/stages/S6-desktop-session.md` |
 | S7 | 输入法（fcitx5 + rime，可选 vinput 语音） | `docs/stages/S7-ime.md` |
 | S8 | 终端（kitty + 主题） | `docs/stages/S8-terminal.md` |
-| S9 | 应用/开发（Node.js + pi + uv + 工具；可选 USB 根盘保活） | `docs/stages/S9-apps.md` |
+| S9 | 应用/开发（Node.js + pi + uv + 工具，可选） | `docs/stages/S9-apps.md` |
+| S10 | USB 根盘保活（可选附加，独立于应用阶段） | `docs/stages/S10-keepalive.md` |
 
 > 装包见 `distros/<distro>/packages.md`；验证要点见 `docs/verification.md`。
 
@@ -62,7 +63,7 @@
 | S7 | 输入法整体（fcitx5 + rime 及全部配置，含 vinput 语音） |
 | S8 | 终端整体（kitty + 默认终端 + 主题 + 字号 + 快捷键） |
 | S9 | Node.js / pi / uv / 工具 |
-| S9-保活 | USB 根盘保活 timer（场景特定） |
+| S10 | USB 根盘保活 timer（场景特定） |
 | dotfiles | vimrc / gitconfig / xprofile |
 
 ## 目录结构
@@ -81,4 +82,4 @@ artifacts/   验证产物（日志/截图，gitignore）
 ## 使用顺序
 1. S0 准备：装宿主机依赖、确认 `TARGET`、`DISTRO`。
 2. S1：按 `distros/<distro>/bootstrap.sh` 装最小系统；QEMU 验证启动链。
-3. S2…S9：先按对应 `packages.md` 装包，再跑该阶段 `apply.sh`，最后 `verify.sh`（QEMU 内）。
+3. S2…S10：先按对应 `packages.md` 装包，再跑该阶段 `apply.sh`，最后 `verify.sh`（QEMU 内）。

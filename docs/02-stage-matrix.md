@@ -14,4 +14,5 @@
 | S6 | `stages/S6-desktop-session` | 图形 | `configs/i3/`、`configs/wallpaper/`(可选) |
 | S7 | `stages/S7-ime` | 输入法 | `configs/fcitx5/`、`configs/rime/` |
 | S8 | `stages/S8-terminal` | 终端 | `configs/kitty/` |
-| S9 | `stages/S9-apps` | 应用 | `configs/models.json.example`、`configs/keepalive/`(可选) |
+| S9 | `stages/S9-apps` | 应用 | `configs/models.json.example` |
+| S10 | `stages/S10-keepalive` | —（无装包） | `configs/keepalive/`(可选) |

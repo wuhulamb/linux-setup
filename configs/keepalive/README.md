@@ -8,7 +8,7 @@
 
 ## 部署件
 - `keep-sda-awake.service` —— oneshot 单元**模板**（`@ROOT_DEV@` 由
-  `stages/S9-apps/apply.sh` 替换为实际根设备），部署到
+  `stages/S10-keepalive/apply.sh` 替换为实际根设备），部署到
   `/etc/systemd/system/keep-sda-awake.service`。
 - `keep-sda-awake.timer` —— 每 3 分钟触发一次，开机自启，部署到
   `/etc/systemd/system/keep-sda-awake.timer`。
@@ -28,11 +28,11 @@
 findmnt -n -o SOURCE /     # 例: /dev/sda2 → 本模块保活的就是它
 ```
 
-### 部署（随 S9）
+### 部署（随 S10）
 ```bash
-TARGET_USER=<user> sudo -E stages/S9-apps/apply.sh
+sudo -E stages/S10-keepalive/apply.sh
 # 若根设备探测不对，或想指定其它设备：
-KEEP_ALIVE_DEVICE=/dev/sdX sudo -E stages/S9-apps/apply.sh
+KEEP_ALIVE_DEVICE=/dev/sdX sudo -E stages/S10-keepalive/apply.sh
 ```
 部署后检查：
 ```bash
