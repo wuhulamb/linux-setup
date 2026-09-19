@@ -32,6 +32,39 @@
 
 > 装包见 `distros/<distro>/packages.md`；验证要点见 `docs/verification.md`。
 
+## 操作分类：必需 vs 个性化配置
+
+判定原则：**必需 = 系统骨架**（不可缺的装包/系统机制/服务）；
+**个性化配置 = 偏好内容、可选模块、设备/环境适配**（其余一切）。
+
+### 必需（最小、严格，仅 5 项）
+
+| 来源 | 内容 |
+|---|---|
+| S1 | 基础安装：GPT+ESP+ext4 / GRUB(UEFI) / 串口控制台 / 最小可启动系统 |
+| S2 | 普通用户 + sudo/wheel；hostname / locale / 时区 |
+| S3 | NetworkManager 主体：有线 DHCP 主 / Wi-Fi 备、路由隔离、DNS |
+| S4 | openssh-server（远程/无头运维） |
+| S5 | fontconfig 机制 + Xft.dpi 会话注入机制（不含数值） |
+
+> 判定说明：桌面（S6）、输入法（S7）、终端（S8）**整体**视为个性化；
+> S2 基础工具清单属“部署依赖 + 个人偏好”，不进必需。
+
+### 个性化配置
+
+| 来源 | 内容 |
+|---|---|
+| S2 | 基础工具清单（curl/wget/git/vim/less/bash-completion，可按需增减） |
+| S3 | 校园网 ECNU（有线认证 + Wi-Fi EAP + 凭据方案） |
+| S3-proxy | Shadowsocks 本地 SOCKS5 + proxychains |
+| S5 | 字体来源（个人仓库）、fonts.conf 回退（YaHei）、Xft.dpi 数值与按机器判定 |
+| S6 | 桌面整体（X11 / i3 / lightdm / udisks2 / flameshot / greeter / 壁纸等） |
+| S7 | 输入法整体（fcitx5 + rime 及全部配置，含 vinput 语音） |
+| S8 | 终端整体（kitty + 默认终端 + 主题 + 字号 + 快捷键） |
+| S9 | Node.js / pi / uv / 工具 |
+| S9-保活 | USB 根盘保活 timer（场景特定） |
+| dotfiles | vimrc / gitconfig / xprofile |
+
 ## 目录结构
 ```
 docs/        文档（总览/约定/阶段矩阵/验证）
