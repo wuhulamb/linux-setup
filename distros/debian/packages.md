@@ -16,7 +16,7 @@ sudo apt install -y --no-install-recommends \
   network-manager wpasupplicant iw rfkill wireless-regdb python3
 ```
 
-## 网络代理（S3-proxy，可选）
+## 网络代理（S3 可选子项）
 ```bash
 sudo apt install -y --no-install-recommends shadowsocks-libev proxychains4
 # proxychains4 配置见 configs/proxy/proxychains4.conf（走本地 SOCKS5 127.0.0.1:1080）

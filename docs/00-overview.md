@@ -21,9 +21,8 @@
 | S0 | 准备：约定 + QEMU 脚手架 | `docs/stages/S0-prep.md` |
 | S1 | 基础系统安装（可启动，**发行版相关**） | `docs/stages/S1-base-install.md` |
 | S2 | 基础配置（用户/sudo/主机名/工具） | `docs/stages/S2-base-config.md` |
-| S3 | 网络（DHCP/Wi‑Fi/校园网认证/DNS） | `docs/stages/S3-network.md` |
-| S3‑proxy | 网络代理（Shadowsocks 本地 SOCKS5 + proxychains，可选） | `docs/stages/S3-proxy.md` |
-| S4 | 远程与 Shell（ssh + dotfiles） | `docs/stages/S4-remote-shell.md` |
+| S3 | 网络（NM 主体；可选子项：校园网 ECNU、本地 SOCKS5 代理） | `docs/stages/S3-network.md` |
+| S4 | 远程（SSH；可选子项：dotfiles 偏好） | `docs/stages/S4-remote-shell.md` |
 | S5 | 字体与 HiDPI（Xft.dpi） | `docs/stages/S5-fonts-dpi.md` |
 | S6 | 图形与登录（X11 + i3 + lightdm，含随机壁纸） | `docs/stages/S6-desktop-session.md` |
 | S7 | 输入法（fcitx5 + rime，可选 vinput 语音） | `docs/stages/S7-ime.md` |
@@ -56,15 +55,14 @@
 | 来源 | 内容 |
 |---|---|
 | S2 | 基础工具清单（curl/wget/git/vim/less/bash-completion，可按需增减） |
-| S3 | 校园网 ECNU（有线认证 + Wi-Fi EAP + 凭据方案） |
-| S3-proxy | Shadowsocks 本地 SOCKS5 + proxychains |
+| S3 | 校园网 ECNU、本地 SOCKS5 代理（可选子项） |
 | S5 | 字体来源（个人仓库）、fonts.conf 回退（YaHei）、Xft.dpi 数值与按机器判定 |
 | S6 | 桌面整体（X11 / i3 / lightdm / udisks2 / flameshot / greeter / 壁纸等） |
 | S7 | 输入法整体（fcitx5 + rime 及全部配置，含 vinput 语音） |
 | S8 | 终端整体（kitty + 默认终端 + 主题 + 字号 + 快捷键） |
 | S9 | Node.js / pi / uv / 工具 |
 | S10 | USB 根盘保活 timer（场景特定） |
-| dotfiles | vimrc / gitconfig / xprofile |
+| S4·dotfiles（可选子项） | vimrc / gitconfig |
 
 ## 目录结构
 ```

@@ -15,7 +15,8 @@ greeter 以 `lightdm` 用户运行，**读不到用户 `~/.Xresources`**，故�
 2. 运行 `stages/S6-desktop-session/apply.sh`：
    - 部署 i3 配置、lightdm 默认会话（`user-session=i3`）+ `graphical.target`；
    - 安装 greeter DPI 服务并执行一次；
-   - 写 `/etc/environment` 的输入法环境变量（`GTK_IM_MODULE=fcitx` 等，供 S7）。
+   - 写 `/etc/environment` 的输入法环境变量（`GTK_IM_MODULE=fcitx` 等，供 S7；**唯一来源**，
+  S4 的 `xprofile` 已废止）。
 3. QEMU 验证（`verify.sh` + `qemu/screenshot.sh` 截图确认 greeter 渲染）。
 
 ## 截图（i3 的 Print 键）

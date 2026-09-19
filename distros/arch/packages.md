@@ -13,7 +13,7 @@ sudo pacman -S --needed networkmanager wpa_supplicant iw rfkill wireless-regdb p
 sudo systemctl enable --now NetworkManager
 ```
 
-## 网络代理（S3-proxy，可选）
+## 网络代理（S3 可选子项）
 ```bash
 sudo pacman -S --needed shadowsocks-libev proxychains-ng
 # proxychains4 配置见 configs/proxy/proxychains4.conf

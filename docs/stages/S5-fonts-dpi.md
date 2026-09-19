@@ -15,6 +15,9 @@
 - 判定：AMD Ryzen 7 7840 → **240**，其它 → **135**（可用 `XFT_DPI` 或 `/etc/xft-dpi` 覆盖）。
 - 登录界面（greeter）的 DPI 是另一套机制，见 S6（greeter 读不到用户 `~/.Xresources`）。
 
+> 注：Xft.dpi 钩子写入 `/etc/X11/Xsession.d/`（S5 只放置文件），待 S6 安装 X11 后于每次会话
+> 初始化生效；无图形（headless）场景此部分不适用，可仅做字体部分。
+
 ## 步骤
 1. 按 `distros/<distro>/packages.md` 装 `fontconfig`（必要时装 CJK 字体）。
 2. 字体到位（`configs/fonts/files/` 或 `FONTS_REPO`），运行 `apply.sh`。

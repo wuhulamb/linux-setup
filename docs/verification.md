@@ -13,8 +13,9 @@ TARGET=/dev/sdX qemu/run-guest.sh
 - **S1**：完整启动链 `OVMF → bootloader → kernel → initramfs → root fs → systemd → login`。
 - **S2**：普通用户登录、sudo、hostname、`systemctl --failed`。
 - **S3**：`ip -4`、`ip r`、`/etc/resolv.conf`、`getent hosts`、`nmcli dev status`；包管理器可用。
-- **S3‑proxy**：`systemctl is-enabled/is-active shadowsocks-local`；`ss -lntp | grep 1080`；`curl -x socks5h://127.0.0.1:1080 ...` 连通。
-- **S4**：`systemctl is-active ssh`、SSH 实际登录、dotfiles 生效。
+- **S3‑代理（可选子项）**：`systemctl is-enabled/is-active shadowsocks-local`；`ss -lntp | grep 1080`；`curl -x socks5h://127.0.0.1:1080 ...` 连通。
+- **S3‑校园网（可选子项）**：`systemctl is-active ecnu-net-login`；`/etc/ecnu/ecnu.conf` 权限为 0600。
+- **S4**：`systemctl is-active ssh`、SSH 实际登录；**S4‑dotfiles（可选）**：`~/.vimrc`、`~/.gitconfig` 就位、`git config --list` 正确。
 - **S5**：`fc-match`；会话内 `xrdb -query | grep Xft.dpi`。
 - **S6**：`lightdm`/`Xorg`/i3；`screendump` 截图确认 greeter；`greeter xft-dpi`；`i3 -C` 配置解析通过、`flameshot --version`、Print 绑定存在。
 - **S6‑壁纸（可选）**：`feh --version`；`random-wallpaper.service` enabled、`/var/lib/wallpapers/current` 为有效 PNG；i3/greeter 配置含壁纸行。

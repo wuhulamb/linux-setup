@@ -1,6 +1,7 @@
 # proxy/
 
-Shadowsocks 本地 SOCKS5 代理的**偏好记录**（阶段文档见 `docs/stages/S3-proxy.md`）。
+Shadowsocks 本地 SOCKS5 代理的**偏好记录**（S3 可选子模块；阶段文档见
+`docs/stages/S3-proxy.md`，部署脚本 `stages/S3-network/apply-proxy.sh`）。
 **真实配置不入库**，仅运行期提供。
 
 - `shadowsocks-libev.json.example` —— 配置模板（服务器/口令为 `<...>` 占位符）；

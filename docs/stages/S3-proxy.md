@@ -1,4 +1,7 @@
-# S3-proxy 网络代理（Shadowsocks 本地 SOCKS5）
+# S3 网络代理（S3 可选子模块）
+
+> 本模块是 `S3` 网络阶段的可选子项，脚本为 `stages/S3-network/apply-proxy.sh` /
+> `verify-proxy.sh`（原独立阶段已并入 S3）。
 
 ## 目标
 - 在 guest 内以 **客户端（ss-local）** 方式运行 `shadowsocks-libev`：监听
@@ -25,7 +28,7 @@
 1. 按 `distros/<distro>/packages.md` 的“网络代理”一节装包（Debian `shadowsocks-libev proxychains4` /
    Arch `shadowsocks-libev proxychains-ng`）。
 2. 放置真实配置（见上）。
-3. 运行 `stages/S3-proxy/apply.sh`：
+3. 运行 `stages/S3-network/apply-proxy.sh`：
    - 创建系统用户 `shadowsocks`（不可登录）；
    - 部署 `/etc/shadowsocks-libev/config.json`（`root:shadowsocks 0640`）；
    - 部署 `configs/proxy/shadowsocks-local.service`，**禁用**包自带的
@@ -49,7 +52,7 @@ export ALL_PROXY=socks5h://127.0.0.1:1080                # 仅当前 shell
 ```
 
 ## 验证
-方法见 `docs/verification.md` 的 S3-proxy 小节。
+方法见 `docs/verification.md` 的 S3‑代理小节；对应脚本 `verify-proxy.sh`。
 
 ## 验证结果（Debian 13 @ `/dev/sdc`）
 `shadowsocks-local.service`：`enabled` + `active`，监听 `127.0.0.1:1080`；

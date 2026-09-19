@@ -1,6 +1,7 @@
 # S0 准备
 
 本阶段**不安装任何东西**，只确定「约定」与「QEMU 验证脚手架」。
+（`stages/S0-prep/` 无脚本；脚手架实际位于 `qemu/`、`tools/` 与 `lib/`。）
 
 ## 约定
 见 `docs/01-conventions.md`；关键变量：

@@ -1,5 +1,5 @@
 #!/bin/sh
-# S3-proxy apply：部署 shadowsocks-libev 本地 SOCKS5 代理并开机自启（发行版无关）
+# S3 代理（可选子项）apply：部署 shadowsocks-libev 本地 SOCKS5 代理并开机自启（发行版无关）
 #
 # 真实服务器/口令不入库：
 #   - 默认读取仓库根的 shadowsocks-config.json（已被 .gitignore 忽略）

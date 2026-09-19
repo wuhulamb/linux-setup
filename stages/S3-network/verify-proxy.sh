@@ -1,5 +1,5 @@
 #!/bin/sh
-# S3-proxy verify（在 guest 内运行）
+# S3 代理（可选子项）verify（在 guest 内运行）
 set -eu
 . "$(cd "$(dirname "$0")/../.." && pwd)/lib/log.sh"
 systemctl is-enabled shadowsocks-local.service 2>/dev/null || true

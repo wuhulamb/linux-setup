@@ -45,3 +45,5 @@
 ## 脚本风格
 - `lib/*.sh` 与各阶段 `apply.sh`/`verify.sh` 用 **POSIX sh**，尽量少依赖。
 - 仅当两发行版都用 systemd 时才用 `systemctl`。
+- 例外：`stages/S1-base-install/run.sh` 与 `distros/*/bootstrap.sh` 用 **bash**（发行版安装流程需要）。
+- 阶段脚本统一**可执行（0755）**，文档按 `sudo -E stages/<phase>/apply.sh` 直接调用。
