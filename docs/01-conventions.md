@@ -9,9 +9,14 @@
 | `NEW_USER`/`NEW_PASS` | S2 创建用户用（运行期） | 口令**不落仓库** |
 | `ECNU_USERNAME`/`ECNU_PASSWORD` | 校园网凭据（运行期） | 不落仓库 |
 | `WIFI_SSID` | 校园 Wi‑Fi SSID | 可写默认 |
+| `SS_SERVER`/`SS_PORT`/`SS_PASSWORD`/`SS_METHOD` | S3 代理服务器与凭据（运行期；未提供 `SS_CONFIG` 文件时据此生成） | 不落仓库 |
+| `SS_CONFIG` | S3 代理配置 JSON 路径（替代 `SS_*` 变量） | `/path/conf.json` |
+| `SS_LOCAL_PORT`/`SS_TIMEOUT` | S3 代理本地端口 / 超时（有默认值） | `1080` / `60` |
 | `GIT_NAME`/`GIT_EMAIL` | git 身份（运行期） | 不落仓库 |
 | `XFT_DPI` | 覆盖 HiDPI 判定 | `240` / `135` |
+| `FONTS_REPO` | S5 字体来源仓库（覆盖默认个人仓库） | `https://github.com/<user>/fonts.git` |
 | `KITTY_FONT_SIZE` | 覆盖 kitty 字号判定（S8） | `14.0` / `12.0` |
+| `KEEP_ALIVE_DEVICE` | S10 保活目标设备（默认 `findmnt` 探测根设备） | `/dev/sda2` |
 | `GUEST_USER`/`GUEST_PASS` | QEMU 串口登录（运行期） | 不落仓库 |
 
 ## 目标盘安全
