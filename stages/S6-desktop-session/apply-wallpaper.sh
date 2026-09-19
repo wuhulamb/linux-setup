@@ -18,9 +18,11 @@ deploy_file "$ROOT/configs/wallpaper/random-wallpaper.service" /etc/systemd/syst
 svc_enable random-wallpaper.service
 
 # 2) 壁纸目录（两个尺寸都备好，设备在运行期按 CPU 自动选择）
+#    目录可能被手工以 root 提前创建/上传 → 统一使出主为 TARGET_USER
 for s in 1920x1080 2880x1800; do
     install -d -o "$TARGET_USER" -g "$TARGET_USER" "$H/Pictures/wallpaper/dst/$s"
 done
+chown -R "$TARGET_USER":"$TARGET_USER" "$H/Pictures/wallpaper" 2>/dev/null || true
 
 # 3) i3：会话启动用 feh 铺壁纸；Ctrl+Mod1+l 锁屏用当前壁纸
 I3="$H/.config/i3/config"

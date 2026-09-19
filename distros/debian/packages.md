@@ -39,7 +39,9 @@ sudo apt install -y --no-install-recommends fontconfig
 sudo apt install -y --no-install-recommends \
   xorg xinit xserver-xorg x11-xserver-utils x11-utils dbus-x11 \
   i3 i3status i3lock suckless-tools \
-  lightdm lightdm-gtk-greeter accountsservice polkitd
+  lightdm lightdm-gtk-greeter accountsservice polkitd \
+  udisks2
+# udisks2：提供 udisksctl/udisksd，桌面自动挂载 U 盘等可移动设备（/media/<user>/…）
 # 随机壁纸（可选，configs/wallpaper/）：feh 用于 i3 铺设壁纸；源图/裁剪见上游 wuhulamb/wallpaper-crop
 sudo apt install -y --no-install-recommends feh
 # 截图（i3 的 Print 键 → flameshot gui，见 configs/i3/config）

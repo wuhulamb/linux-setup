@@ -3,6 +3,7 @@
 ## 目标
 - 安装 X11 与 i3（含 i3status/i3lock/dmenu），部署 `configs/i3/config`。
 - 安装 lightdm(+gtk greeter)，默认会话为 i3，默认目标 `graphical.target`。
+- 装 `udisks2`（提供 `udisksctl`/`udisksd`）：桌面自动挂载 U 盘等可移动设备到 `/media/<user>/…`。
 
 ## 登录界面 DPI
 greeter 以 `lightdm` 用户运行，**读不到用户 `~/.Xresources`**，故用 greeter 自身的

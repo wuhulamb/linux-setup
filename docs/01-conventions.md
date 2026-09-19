@@ -18,6 +18,22 @@
 - 只操作 `TARGET`；容器/宿主机上的其它盘不碰。
 - 清空/分区前先展示将执行的操作。
 
+## 用户目录属主
+- **原则**：凡以 root 部署到用户目录（`$H`）的目录/文件，最终属主必须是
+  `TARGET_USER`，禁止残留 `root:root`（会导致该用户无法写入/应用读档异常）。
+- 脚本侧保障：`install -d -o -g` / `deploy_file <owner>` / `chown -R` 兕底
+  （重点：壁纸 `Pictures/wallpaper`、`.pi`、`.config/*`，见 S5/S6/S9）。
+- 人工操作须知：**避免以 root 提前 `mkdir` 或上传文件到用户目录**（如壁纸
+  `dst/` 上传、`.pi` 手工创建）；上传/创建用户目录内容时以普通用户执行，
+  或事后修正属主。
+- 自查与修正：
+  ```bash
+  # 列出用户目录下所有非用户所有的条目（root:root 等）
+  find /home/<user> ! -user <user> 2>/dev/null | head
+  # 修正（确认无刻意 root 属主后）：
+  sudo chown -R <user>:<user> /home/<user>
+  ```
+
 ## 隐私
 - 仓库内**禁止**出现真实密码/密钥/学号/邮箱；一律占位符（`<...>`）。
 - `secrets/` 只放 `README.md`；真实文件被 `.gitignore` 忽略。

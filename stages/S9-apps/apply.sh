@@ -11,6 +11,8 @@ install -d -o "$TARGET_USER" -g "$TARGET_USER" -m 700 "$H/.pi/agent"
 if [ -f "$ROOT/configs/models.json.example" ]; then
     deploy_file "$ROOT/configs/models.json.example" "$H/.pi/agent/models.json" 600 "$TARGET_USER"
 fi
+# 用户目录属主兜底：.pi 可能被手工以 root 提前创建 → 统一使出主为 TARGET_USER
+chown -R "$TARGET_USER":"$TARGET_USER" "$H/.pi" 2>/dev/null || true
 
 # USB 根盘保活（可选附加）：防硬盘盒固件空闲休眠导致整机冻结
 # 根设备默认自动探测，可用 KEEP_ALIVE_DEVICE=/dev/sdX 覆盖

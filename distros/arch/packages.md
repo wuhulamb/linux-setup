@@ -35,8 +35,9 @@ sudo pacman -S --needed fontconfig
 ```bash
 sudo pacman -S --needed xorg-server xorg-xinit xorg-xrandr xorg-xrdb xorg-xsetroot \
   i3-wm i3status i3lock dmenu \
-  lightdm lightdm-gtk-greeter accountsservice polkit
+  lightdm lightdm-gtk-greeter accountsservice polkit udisks2
 sudo systemctl enable lightdm
+# udisks2：提供 udisksctl/udisksd，桌面自动挂载 U 盘等可移动设备（/media/<user>/…）
 # 随机壁纸（可选，configs/wallpaper/）：源图/裁剪见上游 wuhulamb/wallpaper-crop
 sudo pacman -S --needed feh
 # 截图（i3 的 Print 键 → flameshot gui）：

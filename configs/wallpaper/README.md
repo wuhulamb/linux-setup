@@ -33,6 +33,10 @@ SIZE=2880x1800 ./process.sh     # → dst/2880x1800/
 1. 装 `feh`（i3 铺壁纸用；装包见 `distros/<distro>/packages.md`）。
 2. 把 `dst/1920x1080/` 与 `dst/2880x1800/` 上传到
    `/home/xu/Pictures/wallpaper/dst/`（两部分都要，设备在运行期按 CPU 自动选尺寸）。
+   - **属主要求**：`Pictures/wallpaper` 及其父目录必须属主为 `xu:xu`。
+     若以 root 提前 `mkdir`/上传（或上传工具以 root 运行），目录会变成 `root:root`，
+     桌面读图/选图会异常。纠正：`sudo chown -R xu:xu /home/xu/Pictures/wallpaper`；
+     或直接跑下面的 `apply-wallpaper.sh`（已内置 chown 兕底）。
 3. 运行部署：`TARGET_USER=xu sudo -E stages/S6-desktop-session/apply-wallpaper.sh`。
 
 ## 效果
