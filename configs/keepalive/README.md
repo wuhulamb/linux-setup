@@ -9,9 +9,9 @@
 ## 部署件
 - `keep-sda-awake.service` —— oneshot 单元**模板**（`@ROOT_DEV@` 由
   `stages/S10-keepalive/apply.sh` 替换为实际根设备），部署到
-  `/etc/systemd/system/keep-sda-awake.service`。
+  `/etc/systemd/system/keep-sda-awake.service`（`root:root 0644`）。
 - `keep-sda-awake.timer` —— 每 3 分钟触发一次，开机自启，部署到
-  `/etc/systemd/system/keep-sda-awake.timer`。
+  `/etc/systemd/system/keep-sda-awake.timer`（`root:root 0644`）。
 
 ## 参数（默认）
 | 项 | 值 | 说明 |

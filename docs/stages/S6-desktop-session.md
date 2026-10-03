@@ -28,6 +28,13 @@ greeter 以 `lightdm` 用户运行，**读不到用户 `~/.Xresources`**，故�
 按设备裁剪 `dst/<尺寸>/`、组件与部署）见 **`configs/wallpaper/README.md`**；
 部署脚本：`stages/S6-desktop-session/apply-wallpaper.sh`；`feh` 装包见 `packages.md`。
 
+## 媒体播放防自动熄屏（可选）
+播放视频时若长时间不操作，DPMS 会在 600s 后自动熄屏。可选模块 **media-dpms**：
+**任一 MPRIS 播放器 Playing 时禁用 DPMS**，全部暂停/退出后恢复 600s 超时；
+用户级 systemd 服务（`systemctl --user`，无需 root），依赖 `playerctl` + X11 `xset`。
+部署件、机制与部署命令见 **`configs/media-dpms/README.md`**；
+`playerctl` 装包（可选，默认不装）见 `distros/<distro>/packages.md`。
+
 ## 验证
 方法见 `docs/verification.md`。S6 要点：`lightdm` active、`Xorg` 运行、i3 会话；
-墙纸可选功能的要点也在其中。
+壁纸与 media-dpms 可选功能的要点也在其中。

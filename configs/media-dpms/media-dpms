@@ -1,0 +1,50 @@
+#!/bin/bash
+
+DPMS_TIME=600
+INHIBITED=0
+
+disable_dpms() {
+    if [ "$INHIBITED" -eq 0 ]; then
+        xset s off
+        xset -dpms
+        INHIBITED=1
+    fi
+}
+
+enable_dpms() {
+    if [ "$INHIBITED" -eq 1 ]; then
+        xset s on
+        xset +dpms
+        xset dpms "$DPMS_TIME" "$DPMS_TIME" "$DPMS_TIME"
+        INHIBITED=0
+    fi
+}
+
+# 根据当前所有播放器状态判断
+update_state() {
+    local playing=0
+
+    while read -r player; do
+        [ -z "$player" ] && continue
+
+        if [ "$(playerctl -p "$player" status 2>/dev/null)" = "Playing" ]; then
+            playing=1
+            break
+        fi
+    done < <(playerctl -l 2>/dev/null)
+
+    if [ "$playing" -eq 1 ]; then
+        disable_dpms
+    else
+        enable_dpms
+    fi
+}
+
+# 初始状态
+update_state
+
+# 监听 MPRIS 播放器变化
+playerctl -a --follow status 2>/dev/null |
+while IFS= read -r status; do
+    update_state
+done

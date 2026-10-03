@@ -8,10 +8,10 @@ H="$(getent passwd "$TARGET_USER" | cut -d: -f6)"
 
 install -d -o "$TARGET_USER" -g "$TARGET_USER" "$H/.config/fcitx5" \
     "$H/.config/fcitx5/conf" "$H/.local/share/fcitx5/rime"
-deploy_file "$ROOT/configs/fcitx5/config" "$H/.config/fcitx5/config" 644 "$TARGET_USER"
-deploy_file "$ROOT/configs/fcitx5/profile" "$H/.config/fcitx5/profile" 644 "$TARGET_USER"
-deploy_file "$ROOT/configs/fcitx5/conf/classicui.conf" "$H/.config/fcitx5/conf/classicui.conf" 644 "$TARGET_USER"
-deploy_file "$ROOT/configs/fcitx5/conf/rime.conf" "$H/.config/fcitx5/conf/rime.conf" 644 "$TARGET_USER"
+deploy_file "$ROOT/configs/fcitx5/config" "$H/.config/fcitx5/config" 644 "$TARGET_USER":"$TARGET_USER"
+deploy_file "$ROOT/configs/fcitx5/profile" "$H/.config/fcitx5/profile" 644 "$TARGET_USER":"$TARGET_USER"
+deploy_file "$ROOT/configs/fcitx5/conf/classicui.conf" "$H/.config/fcitx5/conf/classicui.conf" 644 "$TARGET_USER":"$TARGET_USER"
+deploy_file "$ROOT/configs/fcitx5/conf/rime.conf" "$H/.config/fcitx5/conf/rime.conf" 644 "$TARGET_USER":"$TARGET_USER"
 # rime 配置不入库：从个人仓库获取，再应用本仓库的个人调整
 #   来源: https://github.com/wongdean/rime-settings
 RIME_REPO="${RIME_REPO:-https://github.com/wongdean/rime-settings.git}"
@@ -24,7 +24,7 @@ if git clone --depth 1 "$RIME_REPO" "$_tmp" 2>/dev/null; then
     python3 "$ROOT/stages/S7-ime/apply-rime-tweaks.py" "$RIME" 2>/dev/null || true
 fi
 rm -rf "$_tmp"
-chown -R "$TARGET_USER" "$RIME" 2>/dev/null || true
+chown -R "$TARGET_USER":"$TARGET_USER" "$RIME" 2>/dev/null || true
 
 # 触发一次 rime 部署（无头）
 install -d -o "$TARGET_USER" -g "$TARGET_USER" -m 700 "/run/user/$(id -u "$TARGET_USER")" 2>/dev/null || true

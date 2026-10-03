@@ -8,9 +8,9 @@ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 : "${TARGET_USER:?set TARGET_USER}"
 H="$(getent passwd "$TARGET_USER" | cut -d: -f6)"
 
-[ -f "$ROOT/configs/dotfiles/vimrc" ] && deploy_file "$ROOT/configs/dotfiles/vimrc" "$H/.vimrc" 644 "$TARGET_USER"
+[ -f "$ROOT/configs/dotfiles/vimrc" ] && deploy_file "$ROOT/configs/dotfiles/vimrc" "$H/.vimrc" 644 "$TARGET_USER":"$TARGET_USER"
 if [ -f "$ROOT/configs/dotfiles/gitconfig.example" ]; then
-    deploy_file "$ROOT/configs/dotfiles/gitconfig.example" "$H/.gitconfig" 644 "$TARGET_USER"
+    deploy_file "$ROOT/configs/dotfiles/gitconfig.example" "$H/.gitconfig" 644 "$TARGET_USER":"$TARGET_USER"
 fi
 # 运行期可覆盖 git 身份
 [ -n "${GIT_NAME:-}" ]  && su - "$TARGET_USER" -c "git config --global user.name  '$GIT_NAME'"  2>/dev/null || true

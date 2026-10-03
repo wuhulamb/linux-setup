@@ -13,10 +13,10 @@
 - 不硬编码接口名。
 
 ## 配置（configs/network/）
-- `wired-dhcp.nmconnection` → 有线 DHCP profile；
-- `ECNU-1X.nmconnection.example` → 校园 Wi‑Fi（WPA-EAP），凭据运行期生成，权限 0600；
+- `wired-dhcp.nmconnection` → 有线 DHCP profile（`root:root 0600`）；
+- `ECNU-1X.nmconnection.example` → 校园 Wi‑Fi（WPA-EAP），凭据运行期生成，`root:root 0600`；
 - `ecnu_net_login.py` → `/usr/local/bin/ecnu_net_login`（srun_portal 协议）；
-- `ecnu-net-login.service` → systemd 服务；凭据在 `/etc/ecnu/ecnu.conf`（0600，不入库）。
+- `ecnu-net-login.service` → systemd 服务；凭据在 `/etc/ecnu/ecnu.conf`（`root:root 0600`，不入库）。
 
 ## 步骤
 1. 按 `distros/<distro>/packages.md` 的“网络”一节装包。

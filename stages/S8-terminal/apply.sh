@@ -10,13 +10,13 @@ H="$(getent passwd "$TARGET_USER" | cut -d: -f6)"
 # 1) 部署 kitty 配置（含软链与模板）
 install -d -o "$TARGET_USER" -g "$TARGET_USER" "$H/.config/kitty"
 cp -a "$ROOT/configs/kitty/." "$H/.config/kitty/"
-chown -R "$TARGET_USER" "$H/.config/kitty" 2>/dev/null || true
+chown -R "$TARGET_USER":"$TARGET_USER" "$H/.config/kitty" 2>/dev/null || true
 
 # 2) 机器检测库 + 会话初始化脚本（与 S5 apply-xft-dpi 同款，可在运行设备上按 CPU 判定）
 install -D -m755 "$ROOT/lib/detect.sh" /usr/local/lib/linux-setup/detect.sh
 # 初始生成（保证文件存在；之后每次 X 会话启动都按当前机器重写）
 printf 'font_size %s\n' "$(preferred_kitty_font_size)" > "$H/.config/kitty/font-size.conf"
-chown "$TARGET_USER" "$H/.config/kitty/font-size.conf"
+chown "$TARGET_USER":"$TARGET_USER" "$H/.config/kitty/font-size.conf"
 cat > /usr/local/bin/apply-kitty-font-size <<'EOS'
 #!/bin/sh
 . /usr/local/lib/linux-setup/detect.sh

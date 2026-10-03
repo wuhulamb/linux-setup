@@ -39,6 +39,14 @@
   sudo chown -R <user>:<user> /home/<user>
   ```
 
+## 系统部署件属主
+- 系统位置（`/etc/**`、`/usr/local/**`、`/usr/share/**`）部署件统一 **`root:root`**；
+  root 运行的 apply 脚本天然满足（`install` / `deploy_file` 不传 owner 即为 root）。
+- **手工复制系统文件务必用 sudo**（`sudo install -o root -g root -m<mode> <src> <dst>`）；
+  普通用户 `cp` 会残留 `user:user`——实例：`/etc/proxychains4.conf`、
+  `/usr/local/bin/random-wallpaper`、`/usr/local/lib/linux-setup/detect.sh`
+  均曾因手工复制残留 `xu:xu`（本机实测）。
+
 ## 隐私
 - 仓库内**禁止**出现真实密码/密钥/学号/邮箱；一律占位符（`<...>`）。
 - `secrets/` 只放 `README.md`；真实文件被 `.gitignore` 忽略。

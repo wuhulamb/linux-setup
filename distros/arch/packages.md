@@ -42,6 +42,8 @@ sudo systemctl enable lightdm
 sudo pacman -S --needed feh
 # 截图（i3 的 Print 键 → flameshot gui）：
 sudo pacman -S --needed flameshot
+# 媒体播放防自动熄屏（可选，configs/media-dpms/）：MPRIS Playing 时禁用 DPMS（xset）
+sudo pacman -S --needed playerctl
 ```
 
 ## 输入法（S7）

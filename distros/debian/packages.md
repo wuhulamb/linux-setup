@@ -46,6 +46,8 @@ sudo apt install -y --no-install-recommends \
 sudo apt install -y --no-install-recommends feh
 # 截图（i3 的 Print 键 → flameshot gui，见 configs/i3/config）
 sudo apt install -y --no-install-recommends flameshot
+# 媒体播放防自动熄屏（可选，configs/media-dpms/）：MPRIS Playing 时禁用 DPMS（xset）
+sudo apt install -y --no-install-recommends playerctl
 ```
 
 ## 输入法（S7）

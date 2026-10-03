@@ -12,6 +12,7 @@
 | S4 | `stages/S4-remote-shell` | 远程 | `configs/dotfiles/`(可选子项) |
 | S5 | `stages/S5-fonts-dpi` | 字体 | `configs/fonts/` |
 | S6 | `stages/S6-desktop-session` | 图形 | `configs/i3/`、`configs/wallpaper/`(可选) |
+| S6‑media‑dpms（可选） | —（用户空间，无 apply 脚本） | playerctl | `configs/media-dpms/` |
 | S7 | `stages/S7-ime` | 输入法 | `configs/fcitx5/`、`configs/rime/` |
 | S8 | `stages/S8-terminal` | 终端 | `configs/kitty/` |
 | S9 | `stages/S9-apps` | 应用 | `configs/models.json.example` |

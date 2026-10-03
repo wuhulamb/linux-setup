@@ -17,8 +17,8 @@ else
     git clone --depth 1 "$FONTS_REPO" "$_tmp" 2>/dev/null && cp -a "$_tmp/." "$H/.fonts/" 2>/dev/null || true
     rm -rf "$_tmp"
 fi
-chown -R "$TARGET_USER" "$H/.fonts" 2>/dev/null || true
-deploy_file "$ROOT/configs/fonts/fonts.conf" "$H/.config/fontconfig/fonts.conf" 644 "$TARGET_USER"
+chown -R "$TARGET_USER":"$TARGET_USER" "$H/.fonts" 2>/dev/null || true
+deploy_file "$ROOT/configs/fonts/fonts.conf" "$H/.config/fontconfig/fonts.conf" 644 "$TARGET_USER":"$TARGET_USER"
 chown -R "$TARGET_USER":"$TARGET_USER" "$H/.config/fontconfig" 2>/dev/null || true   # 目录属主兜底
 
 # 按机器设置 Xft.dpi 的脚本（供 X 会话初始化调用）

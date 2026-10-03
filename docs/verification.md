@@ -13,12 +13,13 @@ TARGET=/dev/sdX qemu/run-guest.sh
 - **S1**：完整启动链 `OVMF → bootloader → kernel → initramfs → root fs → systemd → login`。
 - **S2**：普通用户登录、sudo、hostname、`systemctl --failed`。
 - **S3**：`ip -4`、`ip r`、`/etc/resolv.conf`、`getent hosts`、`nmcli dev status`；包管理器可用。
-- **S3‑代理（可选子项）**：`systemctl is-enabled/is-active shadowsocks-local`；`ss -lntp | grep 1080`；`curl -x socks5h://127.0.0.1:1080 ...` 连通。
-- **S3‑校园网（可选子项）**：`systemctl is-active ecnu-net-login`；`/etc/ecnu/ecnu.conf` 权限为 0600。
+- **S3‑代理（可选子项）**：`systemctl is-enabled/is-active shadowsocks-local`；`ss -lntp | grep 1080`；`curl -x socks5h://127.0.0.1:1080 ...` 连通；`/etc/proxychains4.conf` 属主 `root:root`。
+- **S3‑校园网（可选子项）**：`systemctl is-active ecnu-net-login`；`/etc/ecnu/ecnu.conf` 属主 `root:root`、权限为 0600。
 - **S4**：`systemctl is-active ssh`、SSH 实际登录；**S4‑dotfiles（可选）**：`~/.vimrc`、`~/.gitconfig` 就位、`git config --list` 正确。
 - **S5**：`fc-match`；会话内 `xrdb -query | grep Xft.dpi`。
 - **S6**：`lightdm`/`Xorg`/i3；`screendump` 截图确认 greeter；`greeter xft-dpi`；`i3 -C` 配置解析通过、`flameshot --version`、Print 绑定存在。
 - **S6‑壁纸（可选）**：`feh --version`；`random-wallpaper.service` enabled、`/var/lib/wallpapers/current` 为有效 PNG；i3/greeter 配置含壁纸行。
+- **S6‑media‑dpms（可选）**：用户服务 `media-dpms.service`（`systemctl --user`）active；无播放时 `xset q` 显示 `DPMS is Enabled`（600/600/600），播放器 Playing 时 `DPMS is Disabled`，暂停/退出后恢复 600。
 - **S7**：`fcitx5` 运行；`~/.local/share/fcitx5/rime/build/` 生成；默认 rime、Shift 切中英。
 - **S7‑vinput（可选）**：`vinput-daemon` 用户服务 active；日志含模型加载完成与 D-Bus `org.fcitx.Vinput`。
 - **S8**：`kitty --version`、`x-terminal-emulator`；`font-size.conf` 按设备生成（非 7840→12.0，`KITTY_FONT_SIZE=14.0` 可验证覆盖）；kitty.conf 含三个 map。

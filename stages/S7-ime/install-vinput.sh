@@ -67,13 +67,13 @@ cat > "$H/.config/fcitx5-vinput/config.json" <<JSON
   "device": "default"
 }
 JSON
-chown "$U" "$H/.config/fcitx5-vinput/config.json"
+chown "$U":"$U" "$H/.config/fcitx5-vinput/config.json"
 
 log "6/6 用户服务开机自启（linger）"
 install -d -o "$U" -g "$U" "$H/.config/systemd/user/default.target.wants"
 ln -sf /usr/share/systemd/user/vinput-daemon.service \
        "$H/.config/systemd/user/default.target.wants/vinput-daemon.service"
-chown -h "$U" "$H/.config/systemd/user/default.target.wants/vinput-daemon.service"
+chown -h "$U":"$U" "$H/.config/systemd/user/default.target.wants/vinput-daemon.service"
 loginctl enable-linger "$U" 2>/dev/null || true
 systemctl start "user@$(id -u "$U")" 2>/dev/null || true
 

@@ -42,6 +42,12 @@
 ## proxychains（命令行强制走代理）
 - 配置：`configs/proxy/proxychains4.conf` → `/etc/proxychains4.conf`
   （`strict_chain` + `proxy_dns` + `socks5 127.0.0.1 1080`）。
+  **属主必须为 `root:root`（0644）**：本文件靠手工复制，普通用户 `cp` 会残留
+  `user:user`（本机踩过，实为 `xu:xu`）；正确部署：
+  ```bash
+  sudo install -o root -g root -m 0644 configs/proxy/proxychains4.conf /etc/proxychains4.conf
+  # 若已残留：sudo chown root:root /etc/proxychains4.conf
+  ```
 - 用法：`proxychains4 -q curl -s https://api.ipify.org`（出口 IP 即代理服务器）。
 - 仅对动态链接、非 setuid 的程序生效；ssh 建议用 `ProxyCommand`。
 

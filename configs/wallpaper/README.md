@@ -4,9 +4,9 @@
 **https://github.com/wuhulamb/wallpaper-crop**（克隆后在其目录内裁剪，见下）。
 本目录只存放「随机壁纸」的**部署件**与偏好记录：
 
-- `random-wallpaper` —— 随机选图脚本（部署到 `/usr/local/bin/random-wallpaper`）。
+- `random-wallpaper` —— 随机选图脚本（部署到 `/usr/local/bin/random-wallpaper`，`root:root 0755`）。
 - `random-wallpaper.service` —— systemd oneshot 单元（部署到
-  `/etc/systemd/system/random-wallpaper.service`，`Before=display-manager`，
+  `/etc/systemd/system/random-wallpaper.service`（`root:root 0644`），`Before=display-manager`，
   `WantedBy=graphical.target`）。
 
 ## 按设备裁剪（在 wallpaper-crop 仓库内）

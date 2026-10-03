@@ -7,7 +7,7 @@ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 H="$(getent passwd "$TARGET_USER" | cut -d: -f6)"
 
 # i3
-deploy_file "$ROOT/configs/i3/config" "$H/.config/i3/config" 644 "$TARGET_USER"
+deploy_file "$ROOT/configs/i3/config" "$H/.config/i3/config" 644 "$TARGET_USER":"$TARGET_USER"
 # .config/i3 顶层目录由 install -D 创建可能为 root:root → 属主纠偏（只纠被本阶段管理的目录）
 chown -R "$TARGET_USER":"$TARGET_USER" "$H/.config/i3" 2>/dev/null || true
 chown "$TARGET_USER":"$TARGET_USER" "$H/.config" 2>/dev/null || true

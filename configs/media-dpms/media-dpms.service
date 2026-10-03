@@ -1,0 +1,14 @@
+[Unit]
+Description=Disable DPMS while media is playing
+After=default.target
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=%h/.Xauthority
+ExecStart=%h/bin/media-dpms
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target
