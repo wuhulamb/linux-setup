@@ -8,9 +8,9 @@ ECNU 校园网有线认证（srun_portal 协议）——仅使用 Python 标准�
 凭据从 /etc/ecnu/ecnu.conf 读取，不会输出到日志或命令行。
 
 用法:
-    ecnu_net_login --once
-    ecnu_net_login --loop --interval 60
-    ecnu_net_login --check          # 只检测网络是否连通
+    ecnu_net_login -m once                  # 登录一次
+    ecnu_net_login -m loop -i 60            # 循环检测，无法联网时自动登录
+    ecnu_net_login -m check                 # 只检测网络是否连通
 """
 import argparse
 import hashlib
